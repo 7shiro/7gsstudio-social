@@ -21,6 +21,11 @@
     position: relative;
   }
 
+  .user-buttons {
+    display: flex;
+    padding: .5em 0 .5em 1em;
+  }
+
   .panel-body {
     word-wrap: break-word;
     border-bottom-right-radius: inherit;
@@ -165,12 +170,15 @@
   }
 
   .user-summary {
-    display: block;
+    display: grid;
+    grid-template-areas:
+      "name name name name name"
+      "hand role lock avg _";
+    grid-template-columns:
+       auto auto auto auto 1fr;
+    justify-items: start;
     margin-left: 0.6em;
-    text-align: left;
     text-overflow: ellipsis;
-    white-space: nowrap;
-    flex: 1 1 0;
     // This is so that text doesn't get overlapped by avatar's shadow if it has
     // big one
     z-index: 1;
@@ -178,54 +186,75 @@
 
     --emoji-size: 1.7em;
 
-    .top-line,
-    .bottom-line {
+    .user-locked {
+      margin-left: 0.5em;
+      grid-area: lock;
+    }
+
+    .user-screen-name {
+      min-width: 1px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      color: $fallback--lightText;
+      color: var(--lightText, $fallback--lightText);
+      grid-area: hand;
+    }
+
+    .dailyAvg {
+      min-width: 1px;
+      margin-left: 1em;
+      font-size: 0.7em;
+      color: $fallback--text;
+      color: var(--text, $fallback--text);
+      grid-area: avg;
+    }
+
+    .user-roles {
       display: flex;
+      grid-area: role;
+
+      .user-role {
+        color: $fallback--text;
+        color: var(--alertNeutralText, $fallback--text);
+        background-color: $fallback--fg;
+        background-color: var(--alertNeutral, $fallback--fg);
+      }
+    }
+  }
+
+  .user-counts {
+    display: flex;
+    line-height:16px;
+    padding: 0 1.5em 0 1.5em;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: space-between;
+    color: $fallback--lightText;
+    color: var(--lightText, $fallback--lightText);
+    align-self: center;
+
+    .user-count {
+      flex: 1 0 auto;
+      padding: .5em 0 .5em 0;
+      margin: 0 .5em;
+
+      h5 {
+        font-size:1em;
+        font-weight: bolder;
+        margin: 0 0 0.25em;
+      }
+      a {
+        text-decoration: none;
+      }
     }
   }
 
   .user-name {
     text-overflow: ellipsis;
     overflow: hidden;
-    flex: 1 1 auto;
     margin-right: 1em;
     font-size: 1.1em;
-  }
-
-  .bottom-line {
-    font-weight: light;
-    font-size: 1.1em;
-    align-items: baseline;
-
-    .lock-icon {
-      margin-left: 0.5em;
-    }
-
-    .user-screen-name {
-      min-width: 1px;
-      flex: 0 1 auto;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      color: $fallback--lightText;
-      color: var(--lightText, $fallback--lightText);
-    }
-
-    .dailyAvg {
-      min-width: 1px;
-      flex: 0 0 auto;
-      margin-left: 1em;
-      font-size: 0.7em;
-      color: $fallback--text;
-      color: var(--text, $fallback--text);
-    }
-
-    .user-role {
-      flex: none;
-      color: $fallback--text;
-      color: var(--alertNeutralText, $fallback--text);
-      background-color: $fallback--fg;
-      background-color: var(--alertNeutral, $fallback--fg);
-    }
+    grid-area: name;
   }
 
   .user-meta {
@@ -294,30 +323,4 @@
 
 .sidebar .edit-profile-button {
   display: none;
-}
-
-.user-counts {
-  display: flex;
-  line-height:16px;
-  padding: .5em 1.5em 0em 1.5em;
-  text-align: center;
-  justify-content: space-between;
-  color: $fallback--lightText;
-  color: var(--lightText, $fallback--lightText);
-  flex-wrap: wrap;
-}
-
-.user-count {
-  flex: 1 0 auto;
-  padding: .5em 0 .5em 0;
-  margin: 0 .5em;
-
-  h5 {
-    font-size:1em;
-    font-weight: bolder;
-    margin: 0 0 0.25em;
-  }
-  a {
-    text-decoration: none;
-  }
 }
