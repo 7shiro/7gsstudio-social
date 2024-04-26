@@ -164,10 +164,11 @@ nav {
 }
 
 .underlay {
-  grid-column-start: 1;
-  grid-column-end: span 3;
-  grid-row-start: 1;
-  grid-row-end: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   pointer-events: none;
   background-color: rgba(0, 0, 0, 0.15);
   background-color: var(--underlay, rgba(0, 0, 0, 0.15));
@@ -176,7 +177,7 @@ nav {
 
 .app-layout {
   --miniColumn: 25rem;
-  --maxiColumn: minmax(var(--miniColumn), 45rem);
+  --maxiColumn: minmax(var(--miniColumn), 1fr);
   --columnGap: 1em;
   --status-margin: 0.75em;
 
@@ -187,6 +188,7 @@ nav {
   grid-template-rows: 1fr;
   box-sizing: border-box;
   margin: 0 auto;
+  padding: 0 calc(var(--columnGap) / 2);
   align-content: flex-start;
   flex-wrap: wrap;
   justify-content: center;
