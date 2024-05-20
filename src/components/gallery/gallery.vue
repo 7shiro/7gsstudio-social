@@ -96,7 +96,7 @@
 
   .gallery-row {
     position: relative;
-    height: 0;
+    max-height: 30em;
     width: 100%;
     flex-grow: 1;
 
