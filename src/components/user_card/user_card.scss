@@ -105,15 +105,10 @@
   padding: 0 26px;
 
   .container {
-    min-width: 0;
     padding: 16px 0 6px;
     display: flex;
     align-items: flex-start;
     max-height: 56px;
-
-    > * {
-      min-width: 0;
-    }
 
     .Avatar {
       --_avatarShadowBox: var(--avatarShadow);
