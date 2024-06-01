@@ -89,9 +89,9 @@ const Gallery = {
     },
     rowStyle (row) {
       if (row.audio) {
-        return { 'aspect-ratio': '1/4' } // fixed reduced height for audio
+        return { 'height': '10em' } // fixed reduced height for audio
       } else if (!row.minimal && !row.grid) {
-        return { 'aspect-ratio': `${(1 / (row.items.length + 0.6))}/1` }
+        return { 'aspect-ratio': `1/${(1 / (row.items.length + 0.6))}` }
       }
     },
     itemStyle (id, row) {
