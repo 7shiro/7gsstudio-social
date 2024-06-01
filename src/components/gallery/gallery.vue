@@ -96,9 +96,11 @@
 
   .gallery-row {
     position: relative;
-    max-height: 30em;
     width: 100%;
     flex-grow: 1;
+    .Status & {
+      max-height: 30em;
+    }
 
     &:not(:first-child) {
       margin-top: 0.5em;
