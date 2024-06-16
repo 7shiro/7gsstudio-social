@@ -177,7 +177,7 @@ nav {
 
 .app-layout {
   --miniColumn: 25rem;
-  --maxiColumn: minmax(var(--miniColumn), 1fr);
+  --maxiColumn: minmax(var(--miniColumn), 45rem);
   --columnGap: 1em;
   --status-margin: 0.75em;
 
@@ -194,6 +194,10 @@ nav {
   justify-content: center;
   min-height: 100vh;
   overflow-x: clip;
+
+  &.-wide-timeline {
+    --maxiColumn: minmax(var(--miniColumn), 1fr);
+  }
 
   .column {
     --___columnMargin: var(--columnGap);

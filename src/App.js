@@ -59,7 +59,8 @@ export default {
         {
           '-reverse': this.reverseLayout,
           '-no-sticky-headers': this.noSticky,
-          '-has-new-post-button': this.newPostButtonShown
+          '-has-new-post-button': this.newPostButtonShown,
+          '-wide-timeline': this.widenTimeline
         },
         '-' + this.layoutType
       ]
@@ -92,6 +93,9 @@ export default {
     },
     newPostButtonShown () {
       return this.$store.getters.mergedConfig.alwaysShowNewPostButton || this.layoutType === 'mobile'
+    },
+    widenTimeline () {
+      return this.$store.getters.mergedConfig.widenTimeline
     },
     showFeaturesPanel () { return this.$store.state.instance.showFeaturesPanel },
     editingAvailable () { return this.$store.state.instance.editingAvailable },

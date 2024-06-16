@@ -934,6 +934,7 @@
             "title": "Version"
         },
         "virtual_scrolling": "Anzeige der Zeitleiste optimieren",
+        "widen_timeline": "Zeitleiste verbreitern, um horizontalen Platz zu füllen",
         "word_filter": "Wortfilter",
         "wordfilter": "Wortfilter"
     },

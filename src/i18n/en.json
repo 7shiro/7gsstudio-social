@@ -948,6 +948,7 @@
         },
         "virtual_scrolling": "Optimize timeline rendering",
         "use_blurhash": "Use blurhashes for NSFW thumbnails",
+        "widen_timeline": "Widen the Timeline to fill horizontal space",
         "word_filter": "Word filter",
         "wordfilter": "Wordfilter"
     },
