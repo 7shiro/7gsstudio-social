@@ -102,6 +102,10 @@
       max-height: 30em;
     }
 
+    &.-audio {
+      aspect-ratio: 4/1; // this is terrible, but it's how it was before so I'm not changing it >:(
+    }
+
     &:not(:first-child) {
       margin-top: 0.5em;
     }

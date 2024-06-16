@@ -88,9 +88,7 @@ const Gallery = {
       set(this.sizes, id, { width, height })
     },
     rowStyle (row) {
-      if (row.audio) {
-        return { 'height': '10em' } // fixed reduced height for audio
-      } else if (!row.minimal && !row.grid) {
+      if (!row.audio && !row.minimal && !row.grid) {
         return { 'aspect-ratio': `1/${(1 / (row.items.length + 0.6))}` }
       }
     },
