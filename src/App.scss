@@ -164,11 +164,10 @@ nav {
 }
 
 .underlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  grid-column-start: 1;
+  grid-column-end: span 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
   pointer-events: none;
   background-color: rgba(0, 0, 0, 0.15);
   background-color: var(--underlay, rgba(0, 0, 0, 0.15));
