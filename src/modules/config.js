@@ -56,6 +56,7 @@ export const defaultState = {
   autohideFloatingPostButton: false,
   pauseOnUnfocused: true,
   displayPageBackgrounds: true,
+  centerAlignBio: false,
   stopGifs: undefined,
   replyVisibility: 'all',
   thirdColumnMode: 'notifications',

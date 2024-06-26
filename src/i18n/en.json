@@ -488,6 +488,7 @@
         "blocks_tab": "Blocks",
         "bot": "This is a bot account",
         "btnRadius": "Buttons",
+        "center_align_bio": "Center text in user bio",
         "cBlue": "Blue (Reply, follow)",
         "cGreen": "Green (Retweet)",
         "cOrange": "Orange (Favorite)",

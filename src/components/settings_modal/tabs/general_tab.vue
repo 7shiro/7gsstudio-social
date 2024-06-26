@@ -160,6 +160,11 @@
           </BooleanSetting>
         </li>
         <li>
+          <BooleanSetting path="centerAlignBio">
+            {{ $t('settings.center_align_bio') }}
+          </BooleanSetting>
+        </li>
+        <li>
           <BooleanSetting path="stopGifs">
             {{ $t('settings.stop_gifs') }}
           </BooleanSetting>

@@ -299,6 +299,7 @@
         :html="user.description_html"
         :emoji="user.emoji"
         :handle-links="true"
+        :style='{"text-align": this.$store.getters.mergedConfig.centerAlignBio ? "center" : "start"}'
       />
     </div>
     <teleport to="#modal">
