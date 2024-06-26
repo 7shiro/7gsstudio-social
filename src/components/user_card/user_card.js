@@ -117,6 +117,9 @@ export default {
     shouldConfirmMute () {
       return this.mergedConfig.modalOnMute
     },
+    compactUserInfo () {
+      return this.$store.getters.mergedConfig.compactUserInfo
+    },
     ...mapGetters(['mergedConfig'])
   },
   components: {

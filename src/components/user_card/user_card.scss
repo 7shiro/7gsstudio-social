@@ -22,8 +22,10 @@
   }
 
   .user-buttons {
+    grid-area: edit;
     display: flex;
     padding: .5em 0 .5em 0;
+    justify-self: end;
   }
 
   .panel-body {
@@ -105,9 +107,12 @@
 
   .container {
     padding: 16px 0 6px;
-    display: flex;
-    align-items: flex-start;
-    max-height: 56px;
+    display: grid;
+    grid-template-areas:
+      "pfp summary edit"
+      "stats stats stats";
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
 
     .Avatar {
       --_avatarShadowBox: var(--avatarShadow);
@@ -122,6 +127,7 @@
   }
 
   &-avatar-link {
+    grid-area: pfp;
     position: relative;
     cursor: pointer;
 
@@ -164,6 +170,7 @@
   }
 
   .user-summary {
+    grid-area: summary;
     display: grid;
     grid-template-areas:
       "name name name name name"
@@ -217,18 +224,17 @@
   }
 
   .user-counts {
+    grid-area: stats;
     display: flex;
     line-height:16px;
-    padding: 0 1.5em 0 1.5em;
-    margin: 0 auto;
+    padding-top: 0.5em;
     text-align: center;
-    justify-content: space-between;
+    justify-content: space-around;
     color: $fallback--lightText;
     color: var(--lightText, $fallback--lightText);
     align-self: center;
 
     .user-count {
-      flex: 1 0 auto;
       padding: .5em 0 .5em 0;
       margin: 0 .5em;
 
@@ -313,6 +319,17 @@
 
     button {
       margin: 0;
+    }
+  }
+
+  &.-compact {
+    .container {
+      grid-template-areas: "pfp summary stats edit";
+      grid-template-columns: auto auto 1fr auto;
+    }
+    .user-counts {
+      padding-top: 0;
+      justify-content: space-evenly;
     }
   }
 }

@@ -57,6 +57,7 @@ export const defaultState = {
   pauseOnUnfocused: true,
   displayPageBackgrounds: true,
   centerAlignBio: false,
+  compactUserInfo: true,
   stopGifs: undefined,
   replyVisibility: 'all',
   thirdColumnMode: 'notifications',

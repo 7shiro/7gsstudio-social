@@ -165,6 +165,11 @@
           </BooleanSetting>
         </li>
         <li>
+          <BooleanSetting path="compactUserInfo">
+            {{ $t('settings.compact_user_info') }}
+          </BooleanSetting>
+        </li>
+        <li>
           <BooleanSetting path="stopGifs">
             {{ $t('settings.stop_gifs') }}
           </BooleanSetting>

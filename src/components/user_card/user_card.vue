@@ -9,7 +9,10 @@
       class="background-image"
     />
     <div class="panel-heading -flexible-height">
-      <div class="user-info">
+      <div
+        class="user-info"
+        :class="{ '-compact': this.compactUserInfo }"
+      >
         <div class="container">
           <a
             v-if="allowZoomingAvatar"
