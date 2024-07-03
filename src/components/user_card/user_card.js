@@ -119,6 +119,7 @@ export default {
     },
     compactUserInfo () {
       return this.$store.getters.mergedConfig.compactUserInfo
+        && (this.$store.state.interface.layoutType !== 'mobile')
     },
     ...mapGetters(['mergedConfig'])
   },
