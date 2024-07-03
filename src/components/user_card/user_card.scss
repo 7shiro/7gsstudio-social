@@ -109,7 +109,8 @@
     padding: 16px 0 6px;
     display: grid;
     grid-template-areas:
-      "pfp summary edit"
+      "pfp name edit"
+      "pfp summary summary"
       "stats stats stats";
     grid-template-columns: auto 1fr auto;
     align-items: start;
@@ -251,13 +252,15 @@
   }
 
   .user-name {
+    text-align: start;
     text-overflow: ellipsis;
     overflow: hidden;
-    margin-right: 1em;
+    margin-left: 0.6em;
     font-size: 1.1em;
     grid-area: name;
     white-space: nowrap;
     max-width: 100%;
+    z-index: 1; // so shadow from user avatar doesn't overlap it
   }
 
   .user-meta {
@@ -325,7 +328,9 @@
 
   &.-compact {
     .container {
-      grid-template-areas: "pfp summary stats edit";
+      grid-template-areas:
+        "pfp name stats edit"
+        "pfp summary stats edit";
       grid-template-columns: auto auto 1fr auto;
     }
     .user-counts {

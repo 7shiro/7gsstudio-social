@@ -32,6 +32,7 @@
           </a>
           <router-link
             v-else
+            class="user-info-avatar-link"
             :to="userProfileLink(user)"
           >
             <UserAvatar
@@ -39,13 +40,13 @@
               :user="user"
             />
           </router-link>
+          <RichContent
+            :title="user.name"
+            class="user-name"
+            :html="user.name"
+            :emoji="user.emoji"
+          />
           <div class="user-summary">
-            <RichContent
-              :title="user.name"
-              class="user-name"
-              :html="user.name"
-              :emoji="user.emoji"
-            />
             <router-link
               class="user-screen-name"
               :title="user.screen_name_ui"
