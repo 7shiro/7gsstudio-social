@@ -165,7 +165,10 @@
           </BooleanSetting>
         </li>
         <li>
-          <BooleanSetting path="compactUserInfo">
+          <BooleanSetting
+            path="compactUserInfo"
+            :disabled="this.$store.state.interface.layoutType === 'mobile'"
+          >
             {{ $t('settings.compact_user_info') }}
           </BooleanSetting>
         </li>
