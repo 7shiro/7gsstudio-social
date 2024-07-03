@@ -194,6 +194,7 @@
 
     .user-screen-name {
       min-width: 1px;
+      max-width: 100%;
       text-overflow: ellipsis;
       overflow: hidden;
       color: $fallback--lightText;
