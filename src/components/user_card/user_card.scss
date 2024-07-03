@@ -258,6 +258,7 @@
     margin-left: 0.6em;
     font-size: 1.1em;
     grid-area: name;
+    align-self: center;
     white-space: nowrap;
     max-width: 100%;
     z-index: 1; // so shadow from user avatar doesn't overlap it
