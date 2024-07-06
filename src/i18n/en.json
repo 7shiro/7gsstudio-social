@@ -503,7 +503,7 @@
         "checkboxRadius": "Checkboxes",
         "collapse_subject": "Collapse posts with content warnings",
         "columns": "Columns",
-        "compact_user_info": "Compact user info",
+        "compact_user_info": "Compact user info when enough space",
         "composing": "Composing",
         "confirm_dialogs": "Require confirmation for:",
         "confirm_dialogs_approve_follow": "Accepting a follow request",
