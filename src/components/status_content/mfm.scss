@@ -1,0 +1,37 @@
+/* Some MFM CSS is also defined in ./static/mfm.css */
+.StatusContent {
+  ._mfm_x2_ {
+    .emoji {
+      height: 100px;
+    }
+  }
+
+  ._mfm_x3_ {
+    .emoji {
+      height: 150px;
+    }
+  }
+
+  ._mfm_x4_ {
+    .emoji {
+      height: 200px;
+    }
+  }
+
+  &.mfm-hover:not(:hover) {
+    .mfm {
+      animation: none !important;
+    }
+  }
+  &.mfm-disabled {
+    span {
+      font-size: 100% !important;
+    }
+    .mfm {
+      animation: none !important;
+    }
+    .emoji {
+      height: 32px !important;
+    }
+  }
+}
