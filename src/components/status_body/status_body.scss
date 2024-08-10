@@ -3,6 +3,7 @@
 .StatusBody {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   .translation {
     border: 1px solid var(--accent, $fallback--link);

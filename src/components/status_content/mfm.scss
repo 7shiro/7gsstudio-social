@@ -125,10 +125,12 @@
   }
 
   .mfm-position {
+    display: inline-block;
     transform: translate(calc(var(--mfm-x, 0) * 1em), calc(var(--mfm-y, 0) * 1em));
   }
 
   .mfm-scale {
+    display: inline-block;
     transform: scale(var(--mfm-x, 1), var(--mfm-y, 1));
   }
 
