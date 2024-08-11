@@ -40,6 +40,35 @@ describe('RichContent', () => {
     expect(wrapper.html().replace(/\n/g, '')).to.eql(compwrap(html))
   })
 
+  it('does not allow injection through MFM data- attributes', () => {
+    const html_ok = '<span class="mfm-spin" data-mfm-speed="-0.2s" data-mfm-color="#000" data-mfm-deg="+30">brrr</span>'
+    const expected_ok = '<span class="mfm-spin" data-mfm-speed="-0.2s" data-mfm-color="#000" data-mfm-deg="+30" style="--mfm-speed: -0.2s; --mfm-color: #000; --mfm-deg: +30;">brrr</span>'
+    const wrapper_ok = shallowMount(RichContent, {
+      global,
+      props: {
+        attentions,
+        handleLinks: true,
+        greentext: true,
+        emoji: [],
+        html: html_ok
+      }
+    })
+    const html_nok = '<span class="mfm-spin" data-mfm-speed="<" data-mfm-color="\\">brrr</span>'
+    const wrapper_nok = shallowMount(RichContent, {
+      global,
+      props: {
+        attentions,
+        handleLinks: true,
+        greentext: true,
+        emoji: [],
+        html: html_nok
+      }
+    })
+
+    expect(wrapper_ok.html()).to.eql(compwrap(expected_ok))
+    expect(wrapper_nok.html()).to.eql(compwrap(html_nok))
+  })
+
   it('unescapes everything as needed', () => {
     const html = [
       p('Testing &#39;em all'),

@@ -194,14 +194,16 @@ export default {
             // Turn data-mfm- attributes into a string for the `style` attribute
             // If they have a value different than `true`, they need to be added to `style`
             // e.g. `attrs={'data-mfm-some': '1deg', 'data-mfm-thing': '5s'}` => "--mfm-some: 1deg;--mfm-thing: 5s;"
+            // Note that we only add the value to `style` when they contain only letters, numbers, dot, hash, or plus or minus signs
+            // At the moment of writing, this should be enough for legitimite purposes and reduces the chance of injection by using special characters
             let mfm_style = Object.keys(attrs).filter(
-              (key) => key.startsWith('data-mfm-') && attrs[key] !== true
+              (key) => key.startsWith('data-mfm-') && attrs[key] !== true && /^[a-zA-Z0-9.\-+#]*$/.test(attrs[key])
             ).map(
               (key) => '--mfm-' + key.substr(9) + ': ' + attrs[key] + ';'
-            ).reduce((a,v) => a+v, "")
-            if (mfm_style !== "") {
+            ).reduce((a,v) => a+v, '')
+            if (mfm_style !== '') {
               return [
-                opener.slice(0,-1) + " style=\"" + mfm_style + "\">",
+                opener.slice(0,-1) + ' style="' + mfm_style + '">',
                 children.map(processItem),
                 closer
               ]
