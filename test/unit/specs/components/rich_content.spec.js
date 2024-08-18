@@ -40,9 +40,9 @@ describe('RichContent', () => {
     expect(wrapper.html().replace(/\n/g, '')).to.eql(compwrap(html))
   })
 
-  it('does not allow injection through MFM data- attributes', () => {
-    const html_ok = '<span class="mfm-spin" data-mfm-speed="-0.2s" data-mfm-color="#000" data-mfm-deg="+30">brrr</span>'
-    const expected_ok = '<span class="mfm-spin" data-mfm-speed="-0.2s" data-mfm-color="#000" data-mfm-deg="+30" style="--mfm-speed: -0.2s; --mfm-color: #000; --mfm-deg: +30;">brrr</span>'
+  it('it adds a # to the MFM color style value', () => {
+    const html_ok = '<span class="mfm-fg" data-mfm-color="fff">this text is not white</span>'
+    const expected_ok = '<span class="mfm-fg" data-mfm-color="fff" style="--mfm-color: #fff;">this text is not white</span>'
     const wrapper_ok = shallowMount(RichContent, {
       global,
       props: {
@@ -53,20 +53,49 @@ describe('RichContent', () => {
         html: html_ok
       }
     })
-    const html_nok = '<span class="mfm-spin" data-mfm-speed="<" data-mfm-color="\\">brrr</span>'
-    const wrapper_nok = shallowMount(RichContent, {
+
+    expect(wrapper_ok.html()).to.eql(compwrap(expected_ok))
+  })
+
+  it('does not allow injection through MFM data- attributes', () => {
+    const html_ok = '<span class="mfm-spin" data-mfm-speed="-0.2s">brrr</span>'
+    const expected_ok = '<span class="mfm-spin" data-mfm-speed="-0.2s" style="--mfm-speed: -0.2s;">brrr</span>'
+    const wrapper_ok = shallowMount(RichContent, {
       global,
       props: {
         attentions,
         handleLinks: true,
         greentext: true,
         emoji: [],
-        html: html_nok
+        html: html_ok
+      }
+    })
+    const html_nok1 = '<span class="mfm-spin" data-mfm-speed="<">brrr</span>'
+    const wrapper_nok1 = shallowMount(RichContent, {
+      global,
+      props: {
+        attentions,
+        handleLinks: true,
+        greentext: true,
+        emoji: [],
+        html: html_nok1
+      }
+    })
+    const html_nok2 = '<span class="mfm-spin" data-mfm-speed="\\">brrr</span>'
+    const wrapper_nok2 = shallowMount(RichContent, {
+      global,
+      props: {
+        attentions,
+        handleLinks: true,
+        greentext: true,
+        emoji: [],
+        html: html_nok2
       }
     })
 
     expect(wrapper_ok.html()).to.eql(compwrap(expected_ok))
-    expect(wrapper_nok.html()).to.eql(compwrap(html_nok))
+    expect(wrapper_nok1.html()).to.eql(compwrap(html_nok1))
+    expect(wrapper_nok2.html()).to.eql(compwrap(html_nok2))
   })
 
   it('unescapes everything as needed', () => {
