@@ -183,6 +183,12 @@ const setSettings = async ({ apiConfig, staticConfig, store }) => {
   copyInstanceOption('renderMisskeyMarkdown')
   copyInstanceOption('sidebarRight')
 
+  if (config.backendCommitUrl)
+    copyInstanceOption('backendCommitUrl')
+
+  if (config.frontendCommitUrl)
+    copyInstanceOption('frontendCommitUrl')
+
   return store.dispatch('setTheme', config['theme'])
 }
 
