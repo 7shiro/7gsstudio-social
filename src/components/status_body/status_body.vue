@@ -91,6 +91,7 @@
               {{ ' ' }}
               <button
                 class="btn button-default"
+                :disabled="translating"
                 @click="translateStatus"
               >
                 {{ $t('status.translate') }}
