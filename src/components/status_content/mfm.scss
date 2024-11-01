@@ -63,46 +63,24 @@
 
   .mfm-x2 {
     --mfm-zoom-size: 200%;
-    /*
-     emoji is normally 38px (see src/components/status_body/status_body.scss
-     we want x2 to be ~100px, so we enlarge (100px/38px) ~= 2.63
-    */
-    .emoji {
-      --mfm-emoji-zoom-size: 2.63;
-    }
   }
 
   .mfm-x3 {
     --mfm-zoom-size: 400%;
-    /*
-     emoji is normally 38px (see src/components/status_body/status_body.scss
-     we want x3 to be ~150px, so we enlarge (150px/38px) ~= 3.95
-    */
-    .emoji {
-      --mfm-emoji-zoom-size: 3.95;
-    }
   }
 
   .mfm-x4 {
     --mfm-zoom-size: 600%;
-    /*
-     emoji is normally 38px (see src/components/status_body/status_body.scss
-     we want x4 to be ~200px, so we enlarge (200px/38px) ~= 5.26
-    */
-    .emoji {
-      --mfm-emoji-zoom-size: 5.26;
-    }
   }
 
   .mfm-x2,
   .mfm-x3,
   .mfm-x4,
   .mfm-tada {
-    font-size: var(--mfm-zoom-size);
     .emoji {
-      --nested-emoji-base-size: calc(var(--emoji-size) * var(--mfm-emoji-zoom-size));
-      height: var(--nested-emoji-base-size);
+      --emoji-size: 2em;
     }
+    font-size: var(--mfm-zoom-size);
 
     .mfm-x2,
     .mfm-x3,
@@ -110,9 +88,6 @@
     .mfm-tada {
       /* only half effective */
       font-size: calc(var(--mfm-zoom-size) / 2 + 50%);
-      .emoji {
-        height: calc(var(--nested-emoji-base-size) * var(--mfm-emoji-zoom-size) / 2);
-      }
 
       .mfm-x2,
       .mfm-x3,
