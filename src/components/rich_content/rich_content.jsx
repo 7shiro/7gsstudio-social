@@ -121,6 +121,19 @@ export default {
       }
     }
 
+    const mfmStyleFromDataAttributes = (attributes) => {
+      // CSS selectors can check if a data-* attribute is true, but can't use other values, so we want to add them to the style attribute
+      // Here we turn e.g. `{'data-mfm-some': '1deg', 'data-mfm-thing': '5s'}` to "--mfm-some: 1deg;--mfm-thing: 5s;"
+      // Note that we only add the value to `style` when they contain only letters, numbers, dot, or minus signs
+      // At the moment of writing, this should be enough for legitimate purposes and reduces the chance of injection by using special characters
+      // There is a special case for the `color` value, who is provided without `#`, but requires this in the `style` attribute
+      return Object.keys(attributes).filter(
+        (key) => key.startsWith('data-mfm-') && attributes[key] !== true && /^[a-zA-Z0-9.\-]*$/.test(attributes[key])
+      ).map(
+        (key) => '--mfm-' + key.substr(9) + (key === 'data-mfm-color' ? ': #' : ': ') + attributes[key] + ';'
+      ).reduce((a,v) => a+v, '')
+    }
+
     // Processor to use with html_tree_converter
     const processItem = (item, index, array, what) => {
       // Handle text nodes - just add emoji
@@ -191,17 +204,8 @@ export default {
             if (this.handleLinks && attrs?.['class']?.includes?.('h-card')) {
               return ['', children.map(processItem), '']
             }
-            // Turn data-mfm- attributes into a string for the `style` attribute
-            // If they have a value different than `true`, they need to be added to `style`
-            // e.g. `attrs={'data-mfm-some': '1deg', 'data-mfm-thing': '5s'}` => "--mfm-some: 1deg;--mfm-thing: 5s;"
-            // Note that we only add the value to `style` when they contain only letters, numbers, dot, or minus signs
-            // At the moment of writing, this should be enough for legitimite purposes and reduces the chance of injection by using special characters
-            // There is a special case for the `color` value, who is provided without `#`, but requires this in the `style` attribute
-            let mfm_style = Object.keys(attrs).filter(
-              (key) => key.startsWith('data-mfm-') && attrs[key] !== true && /^[a-zA-Z0-9.\-]*$/.test(attrs[key])
-            ).map(
-              (key) => '--mfm-' + key.substr(9) + (key === 'data-mfm-color' ? ': #' : ': ') + attrs[key] + ';'
-            ).reduce((a,v) => a+v, '')
+
+            let mfm_style = mfmStyleFromDataAttributes(attrs)
             if (mfm_style !== '') {
               return [
                 opener.slice(0,-1) + ' style="' + mfm_style + '">',
