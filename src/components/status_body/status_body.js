@@ -41,7 +41,8 @@ const StatusContent = {
       postLength: this.status.text.length,
       parseReadyDone: false,
       renderMisskeyMarkdown,
-      translateFrom: null
+      translateFrom: null,
+      translating: false
     }
   },
   computed: {
@@ -135,7 +136,10 @@ const StatusContent = {
     },
     translateStatus () {
       const translateTo = this.$store.getters.mergedConfig.translationLanguage || this.$store.state.instance.interfaceLanguage
-      this.$store.dispatch('translateStatus', { id: this.status.id, language: translateTo, from: this.translateFrom })
+      this.translating = true
+      this.$store.dispatch(
+        'translateStatus', { id: this.status.id, language: translateTo, from: this.translateFrom }
+      ).finally(() => { this.translating = false })
     }
   }
 }
