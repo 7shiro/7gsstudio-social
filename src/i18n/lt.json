@@ -1,0 +1,124 @@
+{
+    "about": {
+        "bubble_instances": "Vietiniai burbulo serveriai",
+        "bubble_instances_description": "Administratorių parinkti serveriai, kurie atstovauja šios serverio vietinę teritoriją",
+        "mrf": {
+            "federation": "Federacija",
+            "keyword": {
+                "ftl_removal": "Pašalinimas iš „Viso žinomo tinklo“ laiko skalės",
+                "is_replaced_by": "→",
+                "keyword_policies": "Raktažodžių politika",
+                "reject": "Atmesti",
+                "replace": "Pakeisti"
+            },
+            "mrf_policies": "Įjungta MRF politika",
+            "mrf_policies_desc": "MRF politika valdo serverio federacijos elgseną.  Įjungtos toliau nurodytos politikos:",
+            "simple": {
+                "accept": "Priimti",
+                "accept_desc": "Šis serveris priima žinutes tik iš toliau nurodytų serverių:",
+                "ftl_removal": "Pašalinimas iš „Žinomo tinklo“ laiko skalės",
+                "ftl_removal_desc": "Šis serveris pašalina šiuos serverius iš „Žinomo tinklo“ laiko skalės:",
+                "instance": "Serveris",
+                "media_nsfw": "Medija priverstinai nustatyta kaip jautri",
+                "media_nsfw_desc": "Šis serveris priverčia nustatyti mediją kaip jautrią toliau nurodytų serverių įrašuose:",
+                "media_removal": "Medijos pašalinimas",
+                "media_removal_desc": "Šis serveris pašalina mediją iš toliau nurodytų serverių įrašų:",
+                "not_applicable": "Nėra",
+                "quarantine": "Karantinas",
+                "quarantine_desc": "Šis serveris nesiųs įrašų į toliau nurodytus serverius:",
+                "reason": "Priežastis",
+                "reject": "Atmesti",
+                "reject_desc": "Šis serveris nepriims žinučių iš toliau nurodytų serverių:",
+                "simple_policies": "Konkretaus serverio politika"
+            }
+        },
+        "staff": "Personalas"
+    },
+    "announcements": {
+        "all_day_prompt": "Tai – visos dienos renginys",
+        "cancel_edit_action": "Atsisakyti",
+        "close_error": "Užverti",
+        "delete_action": "Ištrinti",
+        "edit_action": "Redaguoti",
+        "end_time_display": "Pasibaigia {time}",
+        "end_time_prompt": "Pabaigos laikas: ",
+        "inactive_message": "Šis skelbimas neaktyvus",
+        "mark_as_read_action": "Žymėti kaip skaitytą",
+        "page_header": "Skelbimai",
+        "post_action": "Siųsti",
+        "post_error": "Klaida: {error}",
+        "post_form_header": "Skelbti skelbimą"
+    },
+    "chats": {
+        "chats": "Pokalbiai",
+        "delete": "Ištrinti",
+        "more": "Daugiau",
+        "new": "Naujas pokalbis",
+        "you": "Jūs:"
+    },
+    "display_date": {
+        "today": "Šiandien"
+    },
+    "domain_mute_card": {
+        "mute": "Nutildyti",
+        "mute_progress": "Nutildoma…",
+        "unmute": "Atšaukti nutildymą",
+        "unmute_progress": "Atšaukiamas nutildymas…"
+    },
+    "emoji": {
+        "add_emoji": "Įterpti jaustuką",
+        "custom": "Pasirinktinis jaustukas",
+        "emoji": "Jaustukas",
+        "stickers": "Lipdukai",
+        "unicode": "Unikodo jaustukas"
+    },
+    "exporter": {
+        "export": "Eksportuoti"
+    },
+    "file_type": {
+        "audio": "Garso įrašas",
+        "file": "Failas",
+        "image": "Vaizdas",
+        "video": "Vaizdo įrašas"
+    },
+    "general": {
+        "more": "Daugiau",
+        "scope_in_timeline": {
+            "direct": "Tiesioginis",
+            "local": "Vietinis – šį įrašą gali matyti tik jūsų serveris",
+            "private": "Tik sekėjams",
+            "public": "Vieša",
+            "unlisted": "Neįtrauktas į sąrašą"
+        },
+        "show_less": "Rodyti mažiau",
+        "show_more": "Rodyti daugiau",
+        "submit": "Pateikti",
+        "verify": "Patvirtinti"
+    },
+    "image_cropper": {
+        "cancel": "Atšaukti"
+    },
+    "importer": {
+        "submit": "Pateikti"
+    },
+    "user_card": {
+        "follow_tag": "Sekti saitažodį",
+        "not_following_any_hashtags": "Nesekate jokių saitažodžių.",
+        "unfollow_confirm_accept_button": "Taip, nebesekti",
+        "unfollow_confirm_cancel_button": "Ne, nenaikinti sekimą",
+        "unfollow_confirm_title": "Nebesekti naudotoją",
+        "unfollow_tag": "Nebesekti saitažodį"
+    },
+    "user_reporting": {
+        "additional_comments": "Papildomi komentarai",
+        "forward_description": "Paskyra yra iš kito serverio. Siųsti ataskaitos kopiją ir ten?",
+        "forward_to": "Persiųsti į {0}",
+        "generic_error": "Įvyko klaida apdorojant jūsų užklausą.",
+        "submit": "Pateikti",
+        "title": "Pranešama apie {0}"
+    },
+    "who_to_follow": {
+        "more": "Daugiau",
+        "who_to_follow": "Ką sekti"
+    }
+}
