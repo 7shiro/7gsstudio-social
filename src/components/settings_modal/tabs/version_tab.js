@@ -1,22 +1,25 @@
 import { extractCommit } from 'src/services/version/version.service'
 
-const pleromaFeCommitUrl = 'https://akkoma.dev/AkkomaGang/pleroma-fe/commit/'
-const pleromaBeCommitUrl = 'https://akkoma.dev/AkkomaGang/akkoma/commit/'
+function joinURL(base, subpath) {
+  return URL.parse(subpath, base)?.href || "invalid base URL"
+}
 
 const VersionTab = {
   data () {
     const instance = this.$store.state.instance
     return {
+      backendCommitUrl: instance.backendCommitUrl,
       backendVersion: instance.backendVersion,
+      frontendCommitUrl: instance.frontendCommitUrl,
       frontendVersion: instance.frontendVersion
     }
   },
   computed: {
     frontendVersionLink () {
-      return pleromaFeCommitUrl + this.frontendVersion
+      return joinURL(this.frontendCommitUrl, this.frontendVersion)
     },
     backendVersionLink () {
-      return pleromaBeCommitUrl + extractCommit(this.backendVersion)
+      return joinURL(this.backendCommitUrl, extractCommit(this.backendVersion))
     }
   }
 }
