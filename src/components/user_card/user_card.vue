@@ -9,7 +9,10 @@
       class="background-image"
     />
     <div class="panel-heading -flexible-height">
-      <div class="user-info">
+      <div
+        class="user-info"
+        :class="{ '-compact': this.compactUserInfo }"
+      >
         <div class="container">
           <a
             v-if="allowZoomingAvatar"
@@ -29,6 +32,7 @@
           </a>
           <router-link
             v-else
+            class="user-info-avatar-link"
             :to="userProfileLink(user)"
           >
             <UserAvatar
@@ -36,15 +40,80 @@
               :user="user"
             />
           </router-link>
+          <RichContent
+            :title="user.name"
+            class="user-name"
+            :html="user.name"
+            :emoji="user.emoji"
+          />
           <div class="user-summary">
-            <div class="top-line">
-              <RichContent
-                :title="user.name"
-                class="user-name"
-                :html="user.name"
-                :emoji="user.emoji"
+            <router-link
+              class="user-screen-name"
+              :title="user.screen_name_ui"
+              :to="userProfileLink(user)"
+            >
+              @{{ user.screen_name_ui }}
+            </router-link>
+            <span class="user-roles" v-if="!hideBio && (user.deactivated || !!visibleRole || user.bot)">
+              <span
+                v-if="user.deactivated"
+                class="alert user-role"
+              >
+                {{ $t('user_card.deactivated') }}
+              </span>
+              <span
+                v-if="!!visibleRole"
+                class="alert user-role"
+              >
+                {{ $t(`general.role.${visibleRole}`) }}
+              </span>
+              <span
+                v-if="user.bot"
+                class="alert user-role"
+              >
+                {{ $t('user_card.bot') }}
+              </span>
+            </span>
+            <span class="user-locked" v-if="user.locked">
+              <FAIcon
+                class="lock-icon"
+                icon="lock"
+                size="sm"
               />
-              <button
+            </span>
+            <span
+              v-if="!mergedConfig.hideUserStats && !hideBio"
+              class="dailyAvg"
+            >{{ dailyAvg }} {{ $t('user_card.per_day') }}</span>
+          </div>
+          <div
+            v-if="!mergedConfig.hideUserStats && switcher"
+            class="user-counts"
+          >
+            <div
+              class="user-count"
+              @click.prevent="setProfileView('statuses')"
+            >
+              <h5>{{ $t('user_card.statuses') }}</h5>
+              <span>{{ user.statuses_count }} <br></span>
+            </div>
+            <div
+              class="user-count"
+              @click.prevent="setProfileView('friends')"
+            >
+              <h5>{{ $t('user_card.followees') }}</h5>
+              <span>{{ hideFollowsCount ? $t('user_card.hidden') : user.friends_count }}</span>
+            </div>
+            <div
+              class="user-count"
+              @click.prevent="setProfileView('followers')"
+            >
+              <h5>{{ $t('user_card.followers') }}</h5>
+              <span>{{ hideFollowersCount ? $t('user_card.hidden') : user.followers_count }}</span>
+            </div>
+          </div>
+          <div class="user-buttons">
+            <button
                 v-if="!isOtherUser && user.is_local"
                 class="button-unstyled edit-profile-button"
                 @click.stop="openProfileTab"
@@ -83,47 +152,6 @@
                 :user="user"
                 :relationship="relationship"
               />
-            </div>
-            <div class="bottom-line">
-              <router-link
-                class="user-screen-name"
-                :title="user.screen_name_ui"
-                :to="userProfileLink(user)"
-              >
-                @{{ user.screen_name_ui }}
-              </router-link>
-              <template v-if="!hideBio">
-                <span
-                  v-if="user.deactivated"
-                  class="alert user-role"
-                >
-                  {{ $t('user_card.deactivated') }}
-                </span>
-                <span
-                  v-if="!!visibleRole"
-                  class="alert user-role"
-                >
-                  {{ $t(`general.role.${visibleRole}`) }}
-                </span>
-                <span
-                  v-if="user.bot"
-                  class="alert user-role"
-                >
-                  {{ $t('user_card.bot') }}
-                </span>
-              </template>
-              <span v-if="user.locked">
-                <FAIcon
-                  class="lock-icon"
-                  icon="lock"
-                  size="sm"
-                />
-              </span>
-              <span
-                v-if="!mergedConfig.hideUserStats && !hideBio"
-                class="dailyAvg"
-              >{{ dailyAvg }} {{ $t('user_card.per_day') }}</span>
-            </div>
           </div>
         </div>
         <div class="user-meta">
@@ -269,38 +297,13 @@
       v-if="!hideBio"
       class="panel-body"
     >
-      <div
-        v-if="!mergedConfig.hideUserStats && switcher"
-        class="user-counts"
-      >
-        <div
-          class="user-count"
-          @click.prevent="setProfileView('statuses')"
-        >
-          <h5>{{ $t('user_card.statuses') }}</h5>
-          <span>{{ user.statuses_count }} <br></span>
-        </div>
-        <div
-          class="user-count"
-          @click.prevent="setProfileView('friends')"
-        >
-          <h5>{{ $t('user_card.followees') }}</h5>
-          <span>{{ hideFollowsCount ? $t('user_card.hidden') : user.friends_count }}</span>
-        </div>
-        <div
-          class="user-count"
-          @click.prevent="setProfileView('followers')"
-        >
-          <h5>{{ $t('user_card.followers') }}</h5>
-          <span>{{ hideFollowersCount ? $t('user_card.hidden') : user.followers_count }}</span>
-        </div>
-      </div>
       <RichContent
         v-if="!hideBio"
         class="user-card-bio"
         :html="user.description_html"
         :emoji="user.emoji"
         :handle-links="true"
+        :style='{"text-align": this.$store.getters.mergedConfig.centerAlignBio ? "center" : "start"}'
       />
     </div>
     <teleport to="#modal">
