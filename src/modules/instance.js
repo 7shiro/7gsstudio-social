@@ -61,7 +61,7 @@ const defaultState = {
   showNavShortcuts: true,
   showWiderShortcuts: true,
   sidebarRight: false,
-  widenTimeline: true,
+  widenTimeline: false,
   subjectLineBehavior: 'email',
   theme: 'pleroma-dark',
   virtualScrolling: true,
