@@ -1,4 +1,4 @@
-const MFM_TAGS = ['blur', 'bounce', 'flip', 'font', 'jelly', 'jump', 'rainbow', 'rotate', 'shake', 'sparkle', 'spin', 'tada', 'twitch', 'x2', 'x3', 'x4']
+const MFM_TAGS = ['bg', 'blur', 'bounce', 'center', 'fg', 'flip', 'font', 'jelly', 'jump', 'position', 'rainbow', 'rotate', 'scale', 'shake', 'sparkle', 'spin', 'tada', 'twitch', 'x2', 'x3', 'x4']
   .map(tag => ({ displayText: tag, detailText: '$[' + tag + ' ]', replacement: '$[' + tag + ' ]', mfm: true }))
 
 /**

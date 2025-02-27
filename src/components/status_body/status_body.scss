@@ -3,6 +3,7 @@
 .StatusBody {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   .translation {
     border: 1px solid var(--accent, $fallback--link);
@@ -21,24 +22,6 @@
       transition: unset;
     }
     transition: 0.05s;
-  }
-
-  ._mfm_x2_ {
-    .emoji {
-      height: 100px;
-    }
-  }
-
-  ._mfm_x3_ {
-    .emoji {
-      height: 150px;
-    }
-  }
-
-  ._mfm_x4_ {
-    .emoji {
-      height: 200px;
-    }
   }
 
   .attachments {
