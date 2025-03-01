@@ -99,7 +99,7 @@
     width: 100%;
     flex-grow: 1;
     .Status & {
-      max-height: 10em;
+      max-height: 30em;
     }
 
     &.-audio {
