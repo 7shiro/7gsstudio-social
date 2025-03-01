@@ -88,10 +88,8 @@ const Gallery = {
       set(this.sizes, id, { width, height })
     },
     rowStyle (row) {
-      if (row.audio) {
-        return { 'padding-bottom': '25%' } // fixed reduced height for audio
-      } else if (!row.minimal && !row.grid) {
-        return { 'padding-bottom': `${(100 / (row.items.length + 0.6))}%` }
+      if (!row.audio && !row.minimal && !row.grid) {
+        return { 'aspect-ratio': `1/${(1 / (row.items.length + 0.6))}` }
       }
     },
     itemStyle (id, row) {

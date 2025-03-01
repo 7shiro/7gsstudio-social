@@ -79,6 +79,7 @@ export const defaultState = {
   hideScopeNotice: false,
   useStreamingApi: false,
   sidebarRight: undefined, // instance default
+  widenTimeline: undefined, // instance default
   subjectLineBehavior: undefined, // instance default
   alwaysShowSubjectInput: undefined, // instance default
   postContentType: undefined, // instance default

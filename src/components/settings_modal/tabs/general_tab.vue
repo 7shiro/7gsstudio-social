@@ -280,6 +280,11 @@
           </BooleanSetting>
         </li>
         <li>
+          <BooleanSetting path="widenTimeline">
+            {{ $t('settings.widen_timeline') }}
+          </BooleanSetting>
+        </li>
+        <li>
           <ChoiceSetting
             v-if="user"
             id="thirdColumnMode"

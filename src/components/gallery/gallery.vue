@@ -96,9 +96,15 @@
 
   .gallery-row {
     position: relative;
-    height: 0;
     width: 100%;
     flex-grow: 1;
+    .Status & {
+      max-height: 10em;
+    }
+
+    &.-audio {
+      aspect-ratio: 4/1; // this is terrible, but it's how it was before so I'm not changing it >:(
+    }
 
     &:not(:first-child) {
       margin-top: 0.5em;

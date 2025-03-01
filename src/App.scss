@@ -172,6 +172,10 @@ nav {
   background-color: rgba(0, 0, 0, 0.15);
   background-color: var(--underlay, rgba(0, 0, 0, 0.15));
   z-index: -1000;
+
+  .-wide-timeline & {
+    margin:0 calc(var(--columnGap) / -2);
+  }
 }
 
 .app-layout {
@@ -187,11 +191,16 @@ nav {
   grid-template-rows: 1fr;
   box-sizing: border-box;
   margin: 0 auto;
+  padding: 0 calc(var(--columnGap) / 2);
   align-content: flex-start;
   flex-wrap: wrap;
   justify-content: center;
   min-height: 100vh;
   overflow-x: clip;
+
+  &.-wide-timeline {
+    --maxiColumn: minmax(var(--miniColumn), 1fr);
+  }
 
   .column {
     --___columnMargin: var(--columnGap);
