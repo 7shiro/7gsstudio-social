@@ -85,6 +85,10 @@
     flex-grow: 1;
   }
 
+  .emoji-tabs-item[title="Akkoma"] {
+    display: none !important;
+  }
+  
   .additional-tabs {
     border-left: 1px solid;
     border-left-color: $fallback--icon;

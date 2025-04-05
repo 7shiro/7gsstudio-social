@@ -31,7 +31,7 @@ const EmojiPicker = {
   data () {
     return {
       keyword: '',
-      activeGroup: 'standard',
+      activeGroup: 'recent',
       showingStickers: false,
       keepOpen: false
     }
@@ -90,7 +90,6 @@ const EmojiPicker = {
     },
     emojis () {
       const recentEmojis = this.$store.getters.recentEmojis
-      const standardEmojis = this.$store.state.instance.emoji || []
       const customEmojis = this.sortedEmoji
       const emojiPacks = []
       customEmojis.forEach((pack, id) => {
@@ -111,15 +110,6 @@ const EmojiPicker = {
           },
           emojis: this.filterByKeyword(recentEmojis)
         },
-        {
-          id: 'standard',
-          text: this.$t('emoji.unicode'),
-          first: {
-            imageUrl: '',
-            replacement: '🥴'
-          },
-          emojis: this.filterByKeyword(standardEmojis)
-        }
       ].concat(emojiPacks)
     },
     sortedEmoji () {
